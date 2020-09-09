@@ -5,6 +5,18 @@ $main-black:#080705;
 $main-back:#F5F5F5;
 $main-white:#FBFFFE;
 
+::-moz-selection {
+    /* Code for Firefox */
+    color: $main-white;
+    background: $main-orange;
+}
+
+::selection {
+    color: $main-white;
+    background: $main-orange;
+}
+
+
 * {
     padding: 0;
     margin: 0;
@@ -16,7 +28,6 @@ $main-white:#FBFFFE;
     width: 100%;
     height: 100px;
     background-color: $main-white;
-
     z-index: 10;
 
     .container {
@@ -28,6 +39,20 @@ $main-white:#FBFFFE;
         justify-content: space-between;
         align-items: center;
         margin: 0 auto;
+        border-bottom: 1px solid lightgrey;
+        .search-icon{
+            height: 25px;
+            margin-left:auto;
+            margin-right: 1em;
+            display: none;
+
+        }
+
+        .hamburger-icon{
+            height: 40px;
+            display: none;
+
+        }
 
         .centered-items {
 
@@ -55,20 +80,59 @@ $main-white:#FBFFFE;
 
         }
     }
+
+
+    ul{
+        width: 100%;
+        background-color: $main-white;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        li{
+            list-style: none;
+            font-size: 24px;
+            padding: 30px 0;
+        }
+    }
 }
 
 
 .carousel-main {
     position: relative;
-
     // height: 100vh;
+
+    
     .carousel-item {
         height: fit-content;
 
-        .d-block {
+        .carousel-img{
+            width: 100%;
             height: 100vh;
-            max-height: 1080px;
+
+            
+        &--one{
+            background: linear-gradient(hsla(0, 0%, 0%, 0.418),hsla(0, 0%, 0%, 0.418)), url('/imgs/base_page/pexels-cottonbro-3945662.jpg');
+            background-size: cover;
+            background-position: center;
         }
+        &--two{
+            background:linear-gradient(hsla(0, 0%, 0%, 0.418),hsla(0, 0%, 0%, 0.418)), url('/imgs/base_page/pexels-cottonbro-3945667.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        &--three{
+            background:linear-gradient(hsla(0, 0%, 0%, 0.418),hsla(0, 0%, 0%, 0.418)), url('/imgs/base_page/pexels-cottonbro-3945687.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+    }
+
+
     }
 
 
@@ -77,12 +141,24 @@ $main-white:#FBFFFE;
 .products {
     width: 100%;
     // background-color: $main-white;
-    padding: 50px 0 100px;
+    // padding: 50px 0 50px;
+
+    .popular{
+        width: 100%;
+        // background-color: $main-grey;
+        display: flex;
+        justify-content: center;
+
+        &__text{
+            padding: 50px 0;
+            color: $main-grey;
+        }
+    }
+
 
     .categories {
         display: flex;
         flex-wrap: wrap;
-        ;
         flex-direction: row;
         justify-content: center;
         padding: 50px 0 100px;
@@ -97,10 +173,10 @@ $main-white:#FBFFFE;
             }
         }
 
-
-
-
     }
+
+
+
 
 
     .items {
@@ -152,9 +228,96 @@ $main-white:#FBFFFE;
                     background-color: $main-orange;
                 }
             }
+
+ 
+
         }
 
     }
 
 
 }
+
+
+.best{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: grid;
+    height: 70vh;
+    width: 100%;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 1em;
+    &__img{
+        width: 100%;
+        height: 100%;
+    }
+
+    &__img--one{
+        grid-row: 1/2;
+        grid-column: 1/2;
+    }
+
+    &__img--two{
+        grid-row: 1/2;
+        grid-column: 2/3;
+    }
+    &__img--three{
+        grid-row: 1/3;
+        grid-column: 3/4;
+    }
+
+
+
+}
+
+
+
+
+$layout-breakpoint-mobile: 500px;
+$layout-breakpoint-tablet: 780px;
+
+@media (max-width: $layout-breakpoint-mobile) {
+    .nv{
+        height: 15vh;
+        position: fixed;
+
+        .centered-items,.login-btn{
+            display: none;
+        }
+        
+        .hamburger-icon,
+        .search-icon{
+            display: initial !important;
+        }
+
+        ul{
+            display: flex !important
+        }
+    }
+    .items{
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center;
+    }
+
+    .item {
+    width: 40%  !important;
+
+       img{
+            height: auto !important;
+        }
+
+        &__btn{
+            font-size: 16px;
+        }
+  }
+
+  .best{
+      grid-template-columns: 1fr;
+      background-color: $main-back;
+      padding: 50px 0 50px;
+      margin-bottom: 0;
+  }
+}
+
